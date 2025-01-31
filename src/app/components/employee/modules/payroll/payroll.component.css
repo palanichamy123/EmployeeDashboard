@@ -1,0 +1,60 @@
+/* Payroll Component Styles */
+
+/* General Layout */
+.payroll-container {
+  padding: 20px;
+}
+
+/* Header */
+.payroll-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #ecf0f1;
+  padding: 15px 20px;
+  border-radius: 10px;
+}
+
+/* Tables */
+.payroll-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payroll-table th, .payroll-table td {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.payroll-table th {
+  background: #2980b9;
+  color: white;
+}
+
+.payroll-table tr:nth-child(even) {
+  background: #f9f9f9; /* Alternating row colors */
+}
+
+.payroll-table tr:hover {
+  background: #f1f1f1;
+}
+
+/* Buttons */
+.payroll-button {
+  padding: 5px 10px;
+  border: none;
+  background: #2980b9;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.payroll-button:hover {
+  background: #1a5e7e;
+}

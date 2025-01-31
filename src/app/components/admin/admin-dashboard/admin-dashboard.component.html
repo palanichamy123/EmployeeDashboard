@@ -1,0 +1,114 @@
+<div class="admin-container">
+  <!-- Sidebar -->
+  <nav class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <h2 *ngIf="!isSidebarCollapsed">Admin Panel</h2>
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <i class="fas" [ngClass]="isSidebarCollapsed ? 'fa-bars' : 'fa-times'"></i>
+    </button>
+    <ul>
+      <li>
+        <a href="#">
+          <i class="fas fa-tachometer-alt"></i>
+          <span *ngIf="!isSidebarCollapsed">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-users"></i>
+          <span *ngIf="!isSidebarCollapsed">Employees</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-sitemap"></i>
+          <span *ngIf="!isSidebarCollapsed">Departments</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-calendar-check"></i>
+          <span *ngIf="!isSidebarCollapsed">Attendance</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-dollar-sign"></i>
+          <span *ngIf="!isSidebarCollapsed">Payroll</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-file-alt"></i>
+          <span *ngIf="!isSidebarCollapsed">Reports</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-cogs"></i>
+          <span *ngIf="!isSidebarCollapsed">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span *ngIf="!isSidebarCollapsed">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Header -->
+    <header class="admin-header">
+      <h1>Admin Dashboard</h1>
+      <div class="header-right">
+        <span>Welcome, Admin</span>
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </header>
+
+    <!-- Employee Addition Form -->
+    <section class="dashboard-section">
+      <h2>Add New Employee</h2>
+      <form (ngSubmit)="addEmployee()">
+        <input type="text" placeholder="Name" [(ngModel)]="newEmployee.name" name="name" required>
+        <input type="text" placeholder="Department" [(ngModel)]="newEmployee.department" name="department" required>
+        <input type="email" placeholder="Email" [(ngModel)]="newEmployee.email" name="email" required>
+        <input type="text" placeholder="Role" [(ngModel)]="newEmployee.role" name="role" required>
+        <button type="submit">Add Employee</button>
+      </form>
+    </section>
+
+    <!-- Employee Management Table -->
+    <section class="dashboard-section">
+      <h2>Employee Management</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let employee of employees">
+            <td>{{ employee.id }}</td>
+            <td>{{ employee.name }}</td>
+            <td>{{ employee.department }}</td>
+            <td>{{ employee.email }}</td>
+            <td>{{ employee.role }}</td>
+            <td>
+              <button class="edit-btn">Edit</button>
+              <button class="delete-btn" (click)="deleteEmployee(employee.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

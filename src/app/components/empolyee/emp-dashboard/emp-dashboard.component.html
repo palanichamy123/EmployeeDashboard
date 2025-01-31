@@ -1,0 +1,101 @@
+<div class="employee-container">
+  <!-- Sidebar -->
+  <nav class="sidebar" [class.collapsed]="isSidebarCollapsed">
+    <h2 *ngIf="!isSidebarCollapsed">Employee Panel</h2>
+    <button class="toggle-btn" (click)="toggleSidebar()">
+      <i class="fas" [ngClass]="isSidebarCollapsed ? 'fa-bars' : 'fa-times'"></i>
+    </button>
+    <ul>
+      <li>
+        <a href="#">
+          <i class="fas fa-user"></i>
+          <span *ngIf="!isSidebarCollapsed">My Profile</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-calendar-check"></i>
+          <span *ngIf="!isSidebarCollapsed">Attendance</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-dollar-sign"></i>
+          <span *ngIf="!isSidebarCollapsed">Payroll</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-tasks"></i>
+          <span *ngIf="!isSidebarCollapsed">Tasks</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <i class="fas fa-cogs"></i>
+          <span *ngIf="!isSidebarCollapsed">Settings</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" (click)="logout()">
+          <i class="fas fa-sign-out-alt"></i>
+          <span *ngIf="!isSidebarCollapsed">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="content">
+    <!-- Header -->
+    <header class="employee-header">
+      <h1>Employee Dashboard</h1>
+      <div class="header-right">
+        <span>Welcome, Employee</span>
+        <i class="fas fa-bell"></i>
+        <i class="fas fa-user-circle"></i>
+      </div>
+    </header>
+
+    <!-- Employee Modules -->
+    <section class="dashboard-section">
+      <h2>My Attendance</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let attendance of attendanceRecords">
+            <td>{{ attendance.date }}</td>
+            <td>{{ attendance.status }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="dashboard-section">
+      <h2>My Payroll</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Month</th>
+            <th>Salary</th>
+            <th>Bonus</th>
+            <th>Net Pay</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let payroll of payrollRecords">
+            <td>{{ payroll.month }}</td>
+            <td>{{ payroll.salary }}</td>
+            <td>{{ payroll.bonus }}</td>
+            <td>{{ payroll.netPay }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
